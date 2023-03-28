@@ -1,0 +1,27 @@
+﻿@helper GetTreeView(List<MVCTreeview.NodeDetail> nodeDetails, int parentID)
+{
+foreach (var i in nodeDetails.Where(a => a.ParentNodeId.Equals(parentID)))
+{
+        <li>
+            @{var subnode = nodeDetails.Where(a => a.ParentNodeId.Equals(i.NodeId)).Count();}
+            @if (subnode > 0)
+            {
+                <span class="collapse collapsible">&nbsp;</span>
+            }
+            else
+            {
+                <span style="width:15px; display:inline-block">&nbsp;</span>
+            }
+            <span>
+                <a>@i.NodeName </a>
+            </span>
+            @if (subnode > 0)
+            {
+                <ul>
+                    @Treeview.GetTreeView(nodeDetails, i.NodeId)
+                    @* Recursive  Call for Populate Sub items here*@
+                </ul>
+            }
+        </li>
+    }
+}

@@ -1,0 +1,16 @@
+﻿@model List<MVCTreeview.NodeDetail>
+@{
+    ViewBag.Title = "Simple";
+}
+<h2 style="background-color:lavender">Treeview</h2>
+<div style="border:solid 1px black; padding:10px; background-color:#FAFAFA">
+    <div class="treeview">
+        @if (Model != null && Model.Count() > 0)
+        {
+            <ul>
+                @Treeview.GetTreeView(Model, Model.FirstOrDefault().ParentNodeId)
+            </ul>
+        }
+    </div>
+</div>
+

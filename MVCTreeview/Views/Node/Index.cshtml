@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MVCTreeview.NodeDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="background-color:lavender">Node Details</h2>
+
+<p>
+    @Html.ActionLink("Add New Item", "Create")
+</p>
+<table class="table">
+    <tr style="background-color:gainsboro">
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.NodeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NodeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentNodeId)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+<tr style="background-color:ghostwhite">
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.NodeId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.NodeId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.NodeId })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NodeId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NodeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IsActive)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ParentNodeId)
+    </td>
+  
+</tr>
+}
+
+</table>
